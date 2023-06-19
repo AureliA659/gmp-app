@@ -1,0 +1,30 @@
+.provider{
+    height: 100vh;
+    background-image: url('/src/assets/people-29.jpg');
+    background-size: cover;
+}
+
+.header_p{
+    background-color: rgba(0, 238, 255, 0.938);
+    /* color: azure; */
+}
+
+.main-div{
+    margin-top: 50px;
+    text-align: center;
+}
+
+#but-provider{
+    border-radius: 5px;
+    border: 1px solid grey;
+    height: 50px;
+    width: 200px;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgb(85, 236, 241);
+    color: rgb(48, 49, 49);
+}
+
+#title_pro{
+    text-shadow: 3px 3px 7px white;
+}

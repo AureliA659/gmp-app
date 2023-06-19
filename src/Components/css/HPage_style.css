@@ -1,0 +1,17 @@
+.homepage{
+  background-image: url('/src/assets/pexels-anni-roenkae-2318025.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.footer {
+  /* position: fixed; */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  background-color: #dce9eb;
+}

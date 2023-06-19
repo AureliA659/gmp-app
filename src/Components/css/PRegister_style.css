@@ -1,0 +1,66 @@
+.center_p{
+  padding-top: 50px;
+  /* margin: auto; */
+  /* width: 50%; */
+}
+
+.auth_p{
+  border-radius: 10px;
+  margin: auto;
+  background-color: rgba(245,245,245,0.7);
+  width: 90%;
+  max-width: 800px;
+  border: 1px solid #dcdcdc;
+  padding: 20px;
+  text-align: left;
+}
+
+/* .auth_p form{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 0 auto 10px auto;
+} */
+
+.ul_p{
+  list-style-type: none;
+}
+
+.nav_form{
+  margin-top: 55px;
+}
+
+.input_p{
+  height: 35px;
+  width: 500px;
+}
+
+label{
+  padding-bottom: 15px;
+}
+
+.stripe{
+  background-color: antiquewhite;
+  color: black;
+}
+
+.nav-form{
+  height: 25px;
+  max-width: 95%;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.header_pr{
+  background-color: rgb(226, 242, 255);
+  height: 80px;
+}
+
+.error_bubble {
+  position: absolute;
+  top: -30px; /* Ajuste cette valeur selon ton besoin */
+  background-color: red; /* Couleur de fond de la bulle d'erreur */
+  color: white; /* Couleur du texte de la bulle d'erreur */
+  padding: 5px 10px; /* Espacement interne de la bulle d'erreur */
+  border-radius: 5px; /* Arrondi des coins de la bulle d'erreur */
+}

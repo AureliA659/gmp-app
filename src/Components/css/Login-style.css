@@ -1,0 +1,20 @@
+.input-log{
+  height: 45px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  display: block;
+  margin: auto;
+}
+
+.submit_but{
+  display: block;
+  margin:auto;
+  height: 45px;
+  width: 300px;
+}
+
+.forgot{
+  display: block;
+  margin: auto;
+}

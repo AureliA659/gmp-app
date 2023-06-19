@@ -1,0 +1,22 @@
+.input-text{
+    height: 40px;
+    width: 600px;
+    border-radius: 10px;
+    border-style: none;
+    padding-left: 20px;
+  }
+
+  .send-but{
+    height: 40px;
+    border-radius: 10px;
+    border-style: none;
+    /* width: 20%; */
+    border-left: none;
+    cursor: pointer;
+  }
+
+  .serchList{
+    list-style: none;
+    margin-top: 30px;
+    color: rgb(25, 80, 231);
+  }

@@ -17,10 +17,11 @@ body {
   height: 100%;
 }
 
-.navbar {
+.navbar_user {
   height: 80px;
   /* background-color: rgb(126, 184, 192); */
   position: relative;
+  background-color: aliceblue;
 }
 
 span{
@@ -28,6 +29,9 @@ span{
   align-items: center;
 }
 
+.nav-elements{
+    padding-top: 10px;
+}
 
 .nav-elements ul {
   display: flex;
@@ -61,21 +65,3 @@ span{
   height: 2px;
   background-color: #574c4c;
 }
-
-.login_but{
-  border-style: none;
-  padding-top: 0%;
-  font-weight:500;
-  font-size: large;
-  color: black;
-}
-
-.title_modal{
-  display: block;
-  margin: auto;
-}
-
-/* .test{
-  width: 400px;
-  margin: auto;
-} */
