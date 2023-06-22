@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #fcfcfc;
+  /* background-color: #fcfcfc; */
 }
 
 .container {
@@ -18,8 +18,8 @@ body {
 }
 
 .navbar {
-  height: 80px;
-  /* background-color: rgb(126, 184, 192); */
+  height: 75px;
+  background-color: rgb(245, 248, 248);
   position: relative;
 }
 
@@ -75,7 +75,3 @@ span{
   margin: auto;
 }
 
-/* .test{
-  width: 400px;
-  margin: auto;
-} */

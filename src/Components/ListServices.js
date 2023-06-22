@@ -33,17 +33,18 @@ const ListServices = (props)=>{
     }, [cat]);
 
     return(
-       <div style={{marginTop: '80px', marginBottom:'50px'}}>
+       <div style={{marginTop: '50px', marginBottom:'50px'}}>
                 {results.length === 0 ? (
                     <span>There are no providers for this category right now..</span>
                 ) : (
-             <ListGroup as='ul'>
+             <ListGroup as='ul' style={{width:'600px'}}>
                 {results.map((result,index) => (
                     <ListGroup.Item as='li' eventKey={index.toString()} key={index}>
                         <Card>
                             <Card.Header>{result.activity_name}</Card.Header>
                             <Card.Body>
                                 <Card.Title>{result.first_name} {result.last_name}</Card.Title>
+                                <Card.Text>{result.phone} {result.email}</Card.Text>
                             </Card.Body>
                         </Card>
                     </ListGroup.Item>
@@ -52,7 +53,6 @@ const ListServices = (props)=>{
         )}
     </div>
     )
-
 
 
 }

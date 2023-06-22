@@ -5,7 +5,7 @@ import { auth, db } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import UserNavBar from './UserNavBar';
 import './css/profile.css';
-import { doc, getDoc, collection, query, getDocs, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, query, getDocs, updateDoc, orderBy } from 'firebase/firestore';
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -54,7 +54,6 @@ function Profile() {
 
   const handleSave = async () => {
     if (firstName.trim() === '' || lastName.trim() === '') {
-      // Gère l'erreur ici (par exemple, affiche un message d'erreur)
       return;
     }
 
@@ -73,7 +72,6 @@ function Profile() {
 
       setEditMode(false);
     } catch (error) {
-      // Gère l'erreur ici (par exemple, affiche un message d'erreur)
       console.log(error);
     }
   };
@@ -130,7 +128,6 @@ function Profile() {
             </Card.Link>
           </Card.Body>
         </Card>
-        {/* </div> */}
         </Col>
         <Col className='profile_history'>
           {searches.length > 0 ? (

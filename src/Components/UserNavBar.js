@@ -33,8 +33,6 @@ function UserNavBar(){
                     .then((providerDoc) => {
                     if (providerDoc.exists()) {
                         setUserCollec('providers');
-                        // Redirige-le vers la page correspondante
-                        // Exemple : navigate('/provider-page');
                     } else {
                         console.log('User not found');
                     }
@@ -49,13 +47,12 @@ function UserNavBar(){
             });
         } else {
             setUserCollec('');
-            // L'utilisateur n'est pas connecté, gère cette situation en conséquence
         }
         });
     
-        return () => {
-        unsubscribe();
-        };
+        // return () => {
+        // handleSignOut();
+        // };
     }, []);
   
   // ...

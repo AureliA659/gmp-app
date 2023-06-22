@@ -18,10 +18,11 @@ import {auth} from './firebase';
 import {onAuthStateChanged} from 'firebase/auth';
 import PrivateRoute from './Components/RegisterC/PrivateRoute';
 import {Navigate} from 'react-router-dom';
-import TestComp from './Components/Provider/PRegisterForm';
+import TestComp from './Components/TestComp';
 import PRegisterForm from './Components/Provider/PRegisterForm';
 import ProfileP from './Components/Provider/ProfileP';
 import Footer from './Components/Footer';
+import Contact from './Components/Contact';
 
 
 function App(){
@@ -70,6 +71,7 @@ function App(){
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/services' element={<Services/>}/>
         <Route path='/provider' element={<Provider/>}/>
+        <Route path='/services/contact' element={<Contact/>}/>
         <Route path='/test' element={<TestComp/>} />
         <Route path='/notfound' element={<NotFound/>} />
         

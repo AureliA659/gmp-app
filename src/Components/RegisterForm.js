@@ -5,11 +5,10 @@ import {useNavigate} from 'react-router-dom'
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import {useAuthValue} from './RegisterC/AuthContext'
 import NavBar from './NavBar'
-import Login from './Login'
 import { db } from '../firebase.js'
 import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
+// import Button from 'react-bootstrap/Button'
+// import Modal from 'react-bootstrap/Modal'
 
 
 function RegisterForm() {
@@ -24,10 +23,10 @@ function RegisterForm() {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const {setTimeActive} = useAuthValue()
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   const userRef = collection(db,"users");
   const provRef = collection(db, "providers");
@@ -166,24 +165,6 @@ function RegisterForm() {
 
             <button type='submit'>Register</button>
           </form>
-          <span>
-            Already have an account?  
-            <Button variant="link" onClick={handleShow}>
-                Login
-            </Button>
-
-            <Modal 
-              show={show} 
-              onHide={handleClose}
-              className='test'>
-                  <Modal.Header>
-                    <Modal.Title className="title_modal">Login</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <Login/>
-                  </Modal.Body>
-            </Modal>
-          </span>
         </div>
       </div>
     </div>

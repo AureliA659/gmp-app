@@ -1,5 +1,5 @@
 .homepage{
-  background-image: url('/src/assets/pexels-anni-roenkae-2318025.jpg');
+  background-image: url('/src/assets/sebastian-pandelache-unsplash.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -14,4 +14,18 @@
   bottom: 0;
   height: 70px;
   background-color: #dce9eb;
+}
+
+.list_hp{
+  margin: auto;
+}
+
+.h1_hp{
+  color: white;
+  text-shadow: '3px 3px black';
+}
+
+.search_row{
+  margin-top: 90px;
+
 }

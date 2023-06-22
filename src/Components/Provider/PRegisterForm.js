@@ -9,6 +9,7 @@ import NavBar from "../NavBar";
 import '../css/PRegister_style.css';
 import { ProgressBar} from "react-bootstrap";
 import GoogleAutocomplete from "../RegisterC/GoogleAutoComplete";
+import PhoneNumberValidation from "../PhoneNumberValidation";
 //import axios from "axios";
 
 function PRegisterForm() {
@@ -260,6 +261,7 @@ function PRegisterForm() {
                   onChange={handleChange}
                   required
                 />
+                
               </label>
               <br/>
               <label htmlFor="selectedAddress">Address:

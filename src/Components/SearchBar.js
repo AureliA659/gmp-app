@@ -40,11 +40,12 @@ class SearchBar extends Component {
   fetchSuggestions = async () => {
     const { searchTerm } = this.state;
     if (searchTerm.length > 0) {
+      const sToUp = searchTerm.toUpperCase();
       const activitiesRef = collection(db, 'providers');
       const q = query(
         activitiesRef,
-        where('activity_name', '>=', searchTerm.toUpperCase()),
-        where('activity_name', '<=', searchTerm.toUpperCase() + '\uf8ff'),
+        where('activity_name', '>=', sToUp),
+        where('activity_name', '<=', sToUp + '\uf8ff'),
         limit(10)
       );
       const querySnapshot = await getDocs(q);
@@ -65,16 +66,15 @@ class SearchBar extends Component {
     console.log(connected);
     if (connected && userData) {
       try {
-        // Ajouter la valeur de recherche à la sous-collection "searches" de l'utilisateur
+        // add value to the subcollection 
         const userRef = doc(db, 'users', auth.currentUser.uid);
         const searchDocRef = doc(userRef, 'history', searchTerm);
         
-        // Vérifier si le document de recherche existe déjà
         const searchDocSnapshot = await getDoc(searchDocRef);
         if (searchDocSnapshot.exists()) {
           console.log('The doc still exists');
         } else {
-          // Créer un nouveau document de recherche avec la valeur de recherche comme données
+          
           await setDoc(searchDocRef, { search : searchTerm });
           console.log('saved with success');
         }

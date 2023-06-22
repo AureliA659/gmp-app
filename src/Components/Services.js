@@ -32,10 +32,10 @@ function Services(){
     },[]);
 
     const carouselStyles = {
-        width: '550px',
-        height: '300px',
+        width: '600px',
+        height: 'auto',
         marginTop: '20px',
-        marginBottom: '100px'
+        marginBottom: '50px'
       };
     const titleStyle = {
         textShadow: '3px 3px 6px black',
@@ -44,21 +44,9 @@ function Services(){
     const [isClicked, setIsClicked] = useState(false);
     const [selectedCat, setSelectedCat] = useState('');
     
+    
     const handleClick = async (value) => {
         setIsClicked(true);
-        // const selectedCat = value;
-        // const q = query(
-        //   collection(db, "providers"),
-        //   where("activity_category", "==", selectedCat)
-        // );
-        // const querySnapshot = await getDocs(q);
-        // const documents = [];
-        // querySnapshot.forEach((doc) => {
-        //   const documentData = doc.data();
-        //   documents.push(documentData);
-        // });
-        // console.log(documents);
-        // setResults(documents);
         setSelectedCat(value);
       };
 
@@ -77,7 +65,7 @@ function Services(){
             }
             <div style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
             
-            <Carousel style={carouselStyles}>
+            <Carousel style={carouselStyles} slide={false}>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -207,23 +195,9 @@ function Services(){
                 </Carousel.Item>
             </Carousel>
             {isClicked && (
-            // <div style={{marginTop: '100px'}}>
-            //     {results.length === 0 ? (
-            //         <span>There are no providers for this category right now..</span>
-            //     ) : (
                     <div>
                         <ListServices result = {selectedCat}/>
-                    {/* <Accordion>
-                        {results.map((result,index) => (
-                            <Accordion.Item eventKey={index.toString()}>
-                                <Accordion.Header>{result.activity_name} {result.country}</Accordion.Header>
-                                <Accordion.Body>test</Accordion.Body>
-                            </Accordion.Item>
-                        ))}
-                        </Accordion> */}
                         </div>
-            //     )}
-            // </div>
             )}
 
             
