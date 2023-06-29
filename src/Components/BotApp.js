@@ -16,7 +16,7 @@ class BotApp extends React.Component{
         return(
             <div style={{ height: "500px", width: "auto" }}>
                 <iframe
-                    src={`https://ora.ai/embed/e6d09966-c80c-48a3-a27a-67b10d36c9d2`}
+                    src={`https://openchat.so/chat/oFyJxunn8EgxiUwaj1pU`}
                     width="100%"
                     height="100%"
                     style={{ border: "0", borderRadius: "4px" }}

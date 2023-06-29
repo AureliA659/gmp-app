@@ -24,7 +24,7 @@ const GoogleAutoComplete = ({ onSelectPlace }) => {
       onLoad={(ref) => (inputRef.current = ref)}
       onPlacesChanged={handlePlaceChanged}
     >
-      <input type="text" placeholder="Enter Location" />
+      <input type="text" placeholder="Enter Location" size='56'/>
     </StandaloneSearchBox>
   ) : (
     <div>Loading Google Maps...</div>

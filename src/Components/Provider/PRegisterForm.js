@@ -9,7 +9,8 @@ import NavBar from "../NavBar";
 import '../css/PRegister_style.css';
 import { ProgressBar} from "react-bootstrap";
 import GoogleAutocomplete from "../RegisterC/GoogleAutoComplete";
-import PhoneNumberValidation from "../PhoneNumberValidation";
+import CountryList from "./CountryList";
+//import PhoneNumberValidation from "../PhoneNumberValidation";
 //import axios from "axios";
 
 function PRegisterForm() {
@@ -56,6 +57,7 @@ function PRegisterForm() {
   const [error,setError] = useState('');
   const {setTimeActive} = useAuthValue();
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState('');
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -153,6 +155,7 @@ function PRegisterForm() {
                 last_name: formData.lastName,
                 phone: formData.phone,
                 address: selectedAddress,
+                country: selectedCountry.toUpperCase(),
                 activity_category: formData.activity,
                 activity_name: formData.activity_name.toUpperCase(),
                 sort_price: formData.selectedSortPrice,
@@ -267,9 +270,12 @@ function PRegisterForm() {
               <label htmlFor="selectedAddress">Address:
                 <GoogleAutocomplete
                   onSelectPlace={(place)=> {setSelectedAddress(place.formatted_address)}}
-                  required/>
+                 required/>
               </label>
               <br/>
+              <label htmlFor='selectedCountry'>Country:<br/>
+                <CountryList selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+              </label>
               </div>
             </div>
           </>

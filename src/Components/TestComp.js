@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
-import { PhoneNumberUtil } from 'google-libphonenumber';
-import NavBar from './NavBar';
+import React from "react";
+import { useState, useEffect } from "react";
 
 function TestComp() {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [countries, setCountries] = useState([]);
 
-  const validatePhoneNumber = () => {
-    const phoneUtil = PhoneNumberUtil.getInstance();
-    try {
-      const parsedNumber = phoneUtil.parse(phoneNumber, 'INTERNATIONAL'); // Remplacez 'US' par le code de pays souhaité
-      const isValidNumber = phoneUtil.isValidNumber(parsedNumber);
-      setIsValid(isValidNumber);
-    } catch (error) {
-      setIsValid(false);
-    }
-  };
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      const data = await response.json();
+      const sortedCountries = data.sort((a, b) =>
+        a.name.common.localeCompare(b.name.common)
+      );
+      setCountries(sortedCountries);
+    };
+    fetchCountries();
+  }, []);
 
   return (
-    <div>
-        <div>
-            <NavBar/>
-        </div>
-        <div>
-        <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-        <button onClick={validatePhoneNumber}>Vérifier</button>
-        {isValid ? <p>Le numéro de téléphone est valide.</p> : <p>Le numéro de téléphone est invalide.</p>}
-        </div>
-    </div>
+    <select>
+      {countries.map((country, index) => (
+        <option key={index} value={country.name.common}>
+          {country.name.common}
+        </option>
+      ))}
+    </select>
   );
 }
 
-export default TestComp;
+export default TestComp

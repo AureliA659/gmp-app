@@ -20,6 +20,9 @@ const Footer = () => {
             <p style={{marginTop:'10px',marginBottom:'0'}}>&copy; 2023 The Spot. All Rights Reserved </p>
             <a style={{margin:'0'}} href={`mailto:${email}`} onClick={handleMail}>{email}</a>
           </Col>
+          <Col><br/>
+          <a href='/privacy-policies'>Privacy Policies</a>
+          </Col>
         </Row>
       </Container>
     </footer>

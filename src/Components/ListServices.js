@@ -43,8 +43,15 @@ const ListServices = (props)=>{
                         <Card>
                             <Card.Header>{result.activity_name}</Card.Header>
                             <Card.Body>
-                                <Card.Title>{result.first_name} {result.last_name}</Card.Title>
-                                <Card.Text>{result.phone} {result.email}</Card.Text>
+                                <Card.Title>
+                                    <Card.Link href={`/services/contact/${result.user_id}`}>
+                                        {result.first_name} {result.last_name}
+                                    </Card.Link>
+                                </Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">{result.country}</Card.Subtitle>
+                                <Card.Text>
+                                    {result.phone} 
+                                </Card.Text>
                             </Card.Body>
                         </Card>
                     </ListGroup.Item>

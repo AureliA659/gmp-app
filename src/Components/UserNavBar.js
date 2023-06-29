@@ -50,9 +50,9 @@ function UserNavBar(){
         }
         });
     
-        // return () => {
-        // handleSignOut();
-        // };
+        return () => {
+        unsubscribe();
+        };
     }, []);
   
   // ...
@@ -61,7 +61,7 @@ function UserNavBar(){
     const handleSignOut = ()=>{
         console.log('signed out');
         signOut(auth).then(()=>{
-        navigate('/')
+        navigate('/sign-out')
         })
         
     }

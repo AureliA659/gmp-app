@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +16,7 @@
     "core-js-compat": "^3.4.7",
     "firebase": "^9.15.0",
     "google-libphonenumber": "^3.2.32",
+    "iso-3166-1": "^2.1.1",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",

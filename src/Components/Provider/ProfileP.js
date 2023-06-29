@@ -156,7 +156,7 @@ function ProfileP() {
         </Card>
         </Col>
         <Col>
-          <h4>Just for testing the position</h4>
+          <h4>Coming Soon : Courier Service</h4>
         </Col>
       </Row>
     </div>

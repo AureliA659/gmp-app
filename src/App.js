@@ -23,6 +23,8 @@ import PRegisterForm from './Components/Provider/PRegisterForm';
 import ProfileP from './Components/Provider/ProfileP';
 import Footer from './Components/Footer';
 import Contact from './Components/Contact';
+import SignOut from './Components/SignOut';
+import Privacy from './Components/Privacy';
 
 
 function App(){
@@ -71,7 +73,9 @@ function App(){
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/services' element={<Services/>}/>
         <Route path='/provider' element={<Provider/>}/>
-        <Route path='/services/contact' element={<Contact/>}/>
+        <Route path='sign-out' element={<SignOut/>}/>
+        <Route path='privacy-policies' element={<Privacy/>}/>
+        <Route path='/services/contact/:id' element={<Contact/>}/>
         <Route path='/test' element={<TestComp/>} />
         <Route path='/notfound' element={<NotFound/>} />
         
