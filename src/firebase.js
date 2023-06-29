@@ -13,15 +13,17 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB7TC0rPlAE637r71FK79riojW6loCR0fA",
-  authDomain: "the-spot-ee047.firebaseapp.com",
-  databaseURL: "https://the-spot-ee047-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "the-spot-ee047",
-  storageBucket: "the-spot-ee047.appspot.com",
-  messagingSenderId: "939942500281",
-  appId: "1:939942500281:web:f23ea669dfbf0d30324868",
-  measurementId: "G-4X0R756WDE"
+  apiKey: <your_api_key>,
+  authDomain: <your_auth_domain>,
+  databaseURL: <your_db_url>,
+  projectId: <your_project_id>,
+  storageBucket: <your_storage_bucket>,
+  messagingSenderId: <your_messaging_sender_id>,
+  appId: <your_app_id>,
+  measurementId: <your_measurement_id>
 };
+
+//you can find all the data for config by subscribe your app in firestore
 
 // Initialize Firebase
 const fire = initializeApp(firebaseConfig);
