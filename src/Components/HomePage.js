@@ -8,6 +8,7 @@ import './css/HPage_style.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { Row, Col } from 'react-bootstrap';
+import AdminNavBar from './Admin/AdminNavBar';
 
 
 
@@ -20,6 +21,7 @@ class HomePage extends Component {
       searchResults: [],
       isClicked: false,
       selectedContact: null,
+      loading: true, 
     };
   }
 
@@ -28,10 +30,29 @@ class HomePage extends Component {
     const user = auth.currentUser;
     if (user && user.emailVerified) {
       this.setState({ connected: true });
+  
+      // Récupérer les données de l'utilisateur depuis Firestore
+      const userRef = doc(db, 'users', user.uid);
+      this.setState({ loading: true }); // Définir l'état de chargement sur true
+  
+      getDoc(userRef)
+        .then((docSnapshot) => {
+          if (docSnapshot.exists()) {
+            const userData = docSnapshot.data();
+            this.setState({ userData, loading: false }); // Définir l'état de chargement sur false une fois les données récupérées
+          } else {
+            this.setState({ loading: false }); // Définir l'état de chargement sur false en cas d'utilisateur non trouvé
+          }
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération des données de l\'utilisateur :', error);
+          this.setState({ loading: false }); // Définir l'état de chargement sur false en cas d'erreur
+        });
     } else {
       this.setState({ connected: false });
     }
   }
+  
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.connected !== this.state.connected) {
@@ -41,44 +62,6 @@ class HomePage extends Component {
     }
   }
 
-  // fetchUserData = async () => {
-  //   const user = auth.currentUser;
-  //   const userRef = doc(db, 'users', user.uid);
-  //   const docSnapshot = await getDoc(userRef);
-  //   if (docSnapshot.exists()) {
-  //     this.setState({ userData: docSnapshot.data() });
-  //   }
-  // };
-
-
-  // handleSearch = async (searchTerm) =>{
-  //   this.setState({isClicked: true});
-  //   const q = query(
-  //     collection(db,'providers'),
-  //     where('activity_name','>=', searchTerm.toUpperCase()),
-  //     where('activity_name', '<=', searchTerm.toUpperCase() + '\uf8ff'),
-  //     limit(10)  
-  //   );
-  //   const countryQuery = query(
-  //     collection(db,'providers'),
-  //     where('country','>=',searchTerm.toUpperCase()),
-  //     where('country','<=',searchTerm.toUpperCase() + '\uf8ff'),
-  //     limit(10)
-  //   );
-
-  //   const querySnapshot = await getDocs(q);
-  //   const countrySnapshot = await getDocs(countryQuery);
-  //   const documents = [];
-  //   querySnapshot.forEach((doc)=>{
-  //     const docData = doc.data();
-  //     if(docData.activity_name.toUpperCase().includes(searchTerm.toUpperCase())){
-  //       documents.push(docData)
-  //     }
-      
-  //   });
-  //   console.log(documents);
-  //   this.setState({searchResults: documents});
-  // }
 
   handleSearch = async (searchTerm) => {
     this.setState({ isClicked: true });
@@ -117,13 +100,35 @@ class HomePage extends Component {
 
   
   render() {
-    const { connected, searchResults, isClicked } = this.state;
+    const { connected, searchResults, isClicked, userData, loading } = this.state;
+
+    let navbar = null;
+      if (connected) {
+        if (loading) {
+          navbar = <div>Loading...</div>;
+        } else {
+          if (userData && userData.pseudo === 'admin') {
+            navbar = <AdminNavBar />;
+          } else {
+            navbar = <UserNavBar />;
+          }
+        }
+      } else {
+        navbar = <NavBar />;
+      }
 
     return (
       <div className="homepage">
-        {connected ? (
+
+        {navbar}
+        {/* {connected ? (
           <div>
-            <UserNavBar onSearch={this.handleSignOut}/>
+            {userData.pseudo === 'admin' ? (
+              <AdminNavBar/>
+            ): (
+              <UserNavBar/>
+            )}
+            
             <br />
           </div>
         ) : (
@@ -131,7 +136,8 @@ class HomePage extends Component {
             <NavBar />
             <br />
           </div>
-        )}
+        )} */}
+        
 
           <Row className='search_row'>
           <h1 className='h1_hp'>Find the service you need near you</h1>

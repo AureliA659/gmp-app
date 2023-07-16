@@ -54,7 +54,7 @@ const StarRating = ({ count, color, onRating, connected, averageRating, userRati
   return (
   <div>
     {starRating}<br/>
-    Average Rating: {averageRating.toFixed(1)}{" "}
+    {/* Average Rating: {averageRating.toFixed(1)}{" "} */}
     </div>);
 };
 

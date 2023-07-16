@@ -7,13 +7,19 @@ const Footer = () => {
 
   const email = 'devthespot@gmail.com';
 
+  const footer_style = {
+    bottom: '0',
+    left:'0',
+    width: '100%'
+  }
+
   const handleMail = ()=>{
     const mailtoLink = `mailto:${email}`;
     window.location.href = mailtoLink;
   }
 
   return (
-    <footer className="footer">
+    <footer className="footer-app" style={footer_style}>
       <Container fluid>
         <Row>
           <Col className='text-center'>

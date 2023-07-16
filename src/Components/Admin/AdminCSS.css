@@ -1,0 +1,17 @@
+/* .main_div_admin{
+    margin-top: 50px;
+} */
+
+#select_bar{
+    height: 30px;
+
+}
+
+.tab_side{
+    border-bottom: 1px solid #ccc;
+    padding: 30px;
+}
+
+.admin_table{
+    margin: 35px;
+}

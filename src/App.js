@@ -25,6 +25,7 @@ import Footer from './Components/Footer';
 import Contact from './Components/Contact';
 import SignOut from './Components/SignOut';
 import Privacy from './Components/Privacy';
+import AdminPage from './Components/Admin/AdminPage';
 
 
 function App(){
@@ -55,6 +56,11 @@ function App(){
             <ProfileP/>
           </PrivateRoute>
         }/>
+        <Route path='/admin-page' element={
+          <PrivateRoute>
+            <AdminPage/>
+          </PrivateRoute>
+        }/>
         <Route path='/login' element={
           !currentUser?.emailVerified
           ?<Login/>
@@ -73,8 +79,8 @@ function App(){
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/services' element={<Services/>}/>
         <Route path='/provider' element={<Provider/>}/>
-        <Route path='sign-out' element={<SignOut/>}/>
-        <Route path='privacy-policies' element={<Privacy/>}/>
+        <Route path='/sign-out' element={<SignOut/>}/>
+        <Route path='/privacy-policies' element={<Privacy/>}/>
         <Route path='/services/contact/:id' element={<Contact/>}/>
         <Route path='/test' element={<TestComp/>} />
         <Route path='/notfound' element={<NotFound/>} />
@@ -93,7 +99,7 @@ function App(){
       <button className='app-chatbot-button' onClick={()=> toggleChatbot((prev)=> !prev)}>
         <ButtonIcon className='app-chatbot-button-icon'/>
       </button>
-      <Footer/>
+      <Footer className='footer-app'/>
     </div>
   );
 }

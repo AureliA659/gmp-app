@@ -33,14 +33,21 @@ function Login(){
         var docRef = doc(db, 'users', auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          updateDoc(docRef, {
+          const userData = docSnap.data();
+          if(userData.pseudo === 'admin'){
+            navigate('/admin-page');
+          }
+          else{
+            updateDoc(docRef, {
             verified: true
           });
           navigate('/user-page');
           // in users
-
           console.log('User found in "users"');
-        } else {
+          }
+          
+        }
+        else {
           docRef = doc(db,'providers',auth.currentUser.uid);
           updateDoc(docRef,{
             verified: true

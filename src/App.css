@@ -28,11 +28,15 @@
 }
 
 .footer-app{
-  position: fixed;
+  position: relative;
   height: 80px;
   border-radius: 10px;
   border: none;
   bottom: 0;
+  margin-top: 30px;
+  width: 100%;
+  z-index: 9998;
+  background-color: rgb(238, 247, 247);
 }
 
 .app-chatbot-button-icon {

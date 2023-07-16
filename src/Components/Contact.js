@@ -22,13 +22,16 @@ const Contact = ()=>{
     const [show, setShow] = useState(false);
     const [rating, setRating] = useState(0);
     const [averageRating, setAverageRating] = useState(0);
+    const [msg, setMsg] = useState('');
 
     const handleClose = (event) => {
         const button_val = event.target.value;
         setShow(false);
         if(button_val == 'send'){
-            alert('Sending message is not available right now..');
+            alert(msg);
         }
+        console.log(userData.user_id + 'userid + provider id:'+providerData.user_id);
+        setMsg('');
         
 
     };
@@ -179,8 +182,9 @@ const Contact = ()=>{
                         {providerData ? providerData.activity_name : 'Loading...'}
                         </Card.Title>
                     <Card.Subtitle>
-                        {providerData ? providerData.first_name : 'Loading...'}  
-                        {providerData ? providerData.last_name : 'Loading...'} 
+                        {providerData ? providerData.first_name : 'Loading...'}{'\u00a0'}
+                         {providerData ? providerData.last_name : 'Loading...'} <br/>
+                         {providerData ? providerData.country : 'Loading...'}
                         </Card.Subtitle>
                     <Card.Text>
                         <br/>
@@ -208,7 +212,14 @@ const Contact = ()=>{
                     <Modal.Title>To {providerData.first_name} {providerData.last_name}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <textarea type='text' placeholder='Enter your message here' rows='8' cols='50'></textarea>
+                        <textarea 
+                          type='text' 
+                          placeholder='Enter your message here' 
+                          rows='8' 
+                          cols='50'
+                          value={msg}
+                          onChange = {(e)=>setMsg(e.target.value)}
+                          ></textarea>
                     </Modal.Body>
                     <Modal.Footer>
                     <Button value='close' variant="secondary" onClick={handleClose}>

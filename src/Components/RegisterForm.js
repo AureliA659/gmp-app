@@ -1,3 +1,4 @@
+import React from 'react'
 import {useState} from 'react'
 import './css/Register_style.css'
 import {auth} from '../firebase.js'
@@ -7,8 +8,6 @@ import {useAuthValue} from './RegisterC/AuthContext'
 import NavBar from './NavBar'
 import { db } from '../firebase.js'
 import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
-// import Button from 'react-bootstrap/Button'
-// import Modal from 'react-bootstrap/Modal'
 
 
 function RegisterForm() {
@@ -49,10 +48,17 @@ function RegisterForm() {
   const validatePseudo = async () => {
     let isValid = true;
     if (userPseudo !== '') {
-      if (userPseudo.length < 5) {
+      if(userPseudo.toLowerCase() === 'admin'){
+        isValid = false;
+        setError('pseudo "admin" is not allowed');
+        return isValid;
+      }
+      else if (userPseudo.length < 5) {
         isValid = false;
         setError('Pseudo has to be at least 5 characters long');
-      } else {
+        return isValid;
+      } 
+      else {
         const userDocRef = doc(userRef, userPseudo);
         const provDocRef = doc(provRef, userPseudo);
   
@@ -64,17 +70,18 @@ function RegisterForm() {
   
           if (userDocSnapshot.exists || provDocSnapshot.exists) {
             isValid = false;
-            console.log('Le pseudo existe déjà.');
+            console.log('Pseudo already in use.');
+            return isValid;
           } else {
             isValid = true;
             console.log('success');
+            return isValid;
           }
         } catch (error) {
           console.error('Error checking username existence:', error);
         }
       }
     }
-    return isValid;
   };
   
 
@@ -82,6 +89,10 @@ function RegisterForm() {
     e.preventDefault()
     setError('')
     if(validatePassword() && validatePseudo()) {
+      if (userPseudo.toLowerCase() === 'admin') {
+        setError('Pseudo "admin" is not allowed');
+        return;
+      }
       // Create a new user with email and password using firebase
         createUserWithEmailAndPassword(auth, email, password)
         .then(() => {

@@ -50,6 +50,11 @@ function Services(){
         setSelectedCat(value);
       };
 
+    const handleCarouselChange = () => {
+        setIsClicked(false);
+        setSelectedCat('');
+    };
+
     return(
         <div>
             {connected ? (
@@ -65,7 +70,7 @@ function Services(){
             }
             <div style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
             
-            <Carousel style={carouselStyles} slide={false}>
+            <Carousel style={carouselStyles} slide={false} onSelect={handleCarouselChange}>
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
@@ -196,8 +201,8 @@ function Services(){
             </Carousel>
             {isClicked && (
                     <div>
-                        <ListServices result = {selectedCat}/>
-                        </div>
+                        <ListServices category = {selectedCat}/>
+                    </div>
             )}
 
             

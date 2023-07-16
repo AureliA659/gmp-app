@@ -11,6 +11,8 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ImageProfile from '../assets/birds.jpg';
 import { Row, Col } from 'react-bootstrap';
+import Toast from 'react-bootstrap/Toast';
+import Button from 'react-bootstrap/Button';
 
 
 function Profile() {
@@ -78,9 +80,15 @@ function Profile() {
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
-      navigate('/');
+      navigate('/sign-out');
     });
   };
+
+  const [showA, setShowA] = useState(true);
+  const [showB, setShowB] = useState(true);
+
+  const toggleShowA = () => setShowA(!showA);
+  const toggleShowB = () => setShowB(!showB);
 
   return (
     <div>
@@ -130,9 +138,17 @@ function Profile() {
         </Card>
         </Col>
         <Col className='profile_history'>
+        <Row>
+      {/* <Col md={6} className="mb-2"> */}
+      <Col>
+        <Button onClick={toggleShowA} className="mb-2" variant='secondary'>
+          Your History of Search:
+        </Button>
+        <Toast show={showA} onClose={toggleShowA} style={{width:'650px'}}>
+          
+          <Toast.Body>
           {searches.length > 0 ? (
               <div>
-                <h3 className='h3_profile'>Your history of Search</h3>
               <ListGroup as='ol' id='list_history' >
                 {searches.map((search, index) => (
                   <ListGroup.Item as='li' key={index}>
@@ -146,7 +162,11 @@ function Profile() {
               <span>You have no research done for the moment.</span>
             
           )}
-          {/* </div> */}
+          </Toast.Body>
+        </Toast>
+      </Col>
+    </Row>
+          
           </Col>
       </Row>
     </div>
