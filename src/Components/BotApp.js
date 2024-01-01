@@ -16,7 +16,7 @@ class BotApp extends React.Component{
         return(
             <div style={{ height: "500px", width: "auto" }}>
                 <iframe
-                    src={`https://openchat.so/chat/oFyJxunn8EgxiUwaj1pU`}
+                    src={`https://openchat.so/chat/<find_it_on_the_website>`}
                     width="100%"
                     height="100%"
                     style={{ border: "0", borderRadius: "4px" }}
